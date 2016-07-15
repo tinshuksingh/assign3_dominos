@@ -10,7 +10,6 @@ import org.junit.Test;
 import com.bitwise.dominos.exception.InvalidCrustException;
 import com.bitwise.dominos.exception.InvalidOrderException;
 import com.bitwise.dominos.exception.InvalidToppingException;
-import com.bitwise.dominos.home.Order;
 import com.bitwise.dominos.util.OrderValidator;
 import com.bitwise.dominos.vo.Crust;
 import com.bitwise.dominos.vo.Pizza;
@@ -48,14 +47,23 @@ public class PizzaTest {
 		OrderValidator.validateCrust(pizza);
 	}
 	
-	
-	/*@Test(expected = InvalidOrderException.class)
-	public void shouldNotAcceptSmallCheeseBurst() throws InvalidOrderException {
-		Pizza pizza = new Pizza("Chicken Maxicana","Cheese Burst","Small");
+	@Test
+	public void addValidPizza() throws InvalidOrderException{
+		Pizza pizza = new Pizza();
+		pizza.setName("Margherita");
+		OrderValidator.validatePizza(pizza);
 	}
-	@Test(expected = InvalidOrderException.class)
-	public void shouldNotAcceptLargeCheeseBurst() throws InvalidOrderException {
-		Pizza pizza = new Pizza("Chicken Maxicana","Cheese Burst","Large");
-	}*/
-
+	
+	@Test
+	public void addPizzaWithValidCrustAndTopping() throws InvalidCrustException, InvalidToppingException {
+		Pizza pizza = new Pizza();
+		pizza.setName("Margherita");
+		List<String> extraTopping= new ArrayList<String>();
+		extraTopping.add("Pineapple");
+		OrderValidator.validateToppings(pizza);
+		pizza.setExtraTopping(extraTopping);
+		Crust crust= new Crust("Thin Crust",0);
+		pizza.setCrust(crust);
+		OrderValidator.validateCrust(pizza);
+	}
 }

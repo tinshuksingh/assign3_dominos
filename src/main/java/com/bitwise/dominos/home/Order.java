@@ -22,9 +22,9 @@ public class Order {
 	}
 
 	private List<Pizza> pizzaList;
-	private float vat;
-	private float serviceTax;
-	private float totalAmount;
+	private final double vat=0.1;
+	private final double serviceTax=0.15;
+	private double totalAmount;
 	
 	public List<Pizza> getPizzaList() {
 		if(pizzaList == null){
@@ -35,19 +35,8 @@ public class Order {
 	public void setPizzaList(List<Pizza> pizzaList) {
 		this.pizzaList = pizzaList;
 	}
-	public float getVat() {
-		return vat;
-	}
-	public void setVat(float vat) {
-		this.vat = vat;
-	}
-	public float getServiceTax() {
-		return serviceTax;
-	}
-	public void setServiceTax(float serviceTax) {
-		this.serviceTax = serviceTax;
-	}
-	public float getTotalAmount() {
+	
+	public double getTotalAmount() {
 		return totalAmount;
 	}
 	public void setTotalAmount(float totalAmount) {
@@ -73,6 +62,11 @@ public class Order {
 				}
 			}
 		}
+		
+		System.out.println("totalAmmount :"+totalAmount);
+		System.out.println("Vat"+(totalAmount*vat));
+		System.out.println("serviceTax"+(totalAmount*serviceTax));
+		totalAmount=totalAmount+(totalAmount*vat)+(totalAmount*serviceTax);
 		
 		
 	}
