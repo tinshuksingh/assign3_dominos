@@ -34,7 +34,7 @@ public class PizzaDB {
 		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Pineapple"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
-		allPizzaMap.put("Hawaiian Delight Non Veg", pizza);
+		allPizzaMap.put("Hawaiian Delight NonVeg", pizza);
 		
 		// Hawaiian Delight Veg
 		pizza = new Pizza();

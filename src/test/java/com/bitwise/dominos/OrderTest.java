@@ -11,6 +11,7 @@ import com.bitwise.dominos.exception.InvalidCrustException;
 import com.bitwise.dominos.exception.InvalidOrderException;
 import com.bitwise.dominos.exception.InvalidToppingException;
 import com.bitwise.dominos.home.OrderPizza;
+import com.bitwise.dominos.vo.Crust;
 import com.bitwise.dominos.vo.Pizza;
 
 public class OrderTest {
@@ -53,11 +54,10 @@ public class OrderTest {
 		assertEquals(643.75,order.getTotalAmount(),0);
 	}
 	
+	//order1
 	@Test
 	public void shouldReturnMultiplePizzaPriceWithTax() throws InvalidOrderException, InvalidCrustException, InvalidToppingException {
 		OrderPizza order = new OrderPizza();
-		//order.setVat(10);
-		//order.setServiceTax(15);
 		Pizza pizza = new Pizza();
 		pizza.setName("Chicken Maxicana"); //300
 		order.addPizza(pizza);
@@ -73,5 +73,32 @@ public class OrderTest {
 		assertEquals(1012.5,order.getTotalAmount(),2);
 		
 	}
+	
+	//order2
+		@Test
+		public void shouldReturnMultiplePizzaPriceWithTaxAndAddExtraToppingAndCrust() throws InvalidOrderException, InvalidCrustException, InvalidToppingException {
+			OrderPizza order = new OrderPizza();
+			Pizza pizza = new Pizza();
+			pizza.setName("Hawaiian Delight Veg");//200
+			pizza.getExtraTopping().add("Cheese");//20
+			pizza.getExtraTopping().add("Olives");//15
+			pizza.setExtraTopping(pizza.getExtraTopping());
+			Crust crust= new Crust("Pan Pizza",0);//100
+			pizza.setCrust(crust);
+			order.addPizza(pizza);
+			
+			pizza = new Pizza();
+			pizza.setName("Hawaiian Delight NonVeg"); //220
+			pizza.getExtraTopping().add("Barbeque Chicken");//100
+			crust= new Crust("Cheese Burst",0);//200
+			pizza.setCrust(crust);
+			order.addPizza(pizza);
+			
+			order.calculateTotalPrice();
+			
+			double totalPrice=order.getTotalAmount();
+			assertEquals(1068.75,totalPrice,2);
+			
+		}
 
 }

@@ -42,7 +42,7 @@ public class PizzaTest {
 		List<String> extraTopping= new ArrayList<String>();
 		extraTopping.add("Pineapple1");
 		pizza.setExtraTopping(extraTopping);
-		Crust crust= new Crust("Thin",0);
+		Crust crust= new Crust("Thin");
 		pizza.setCrust(crust);
 		OrderValidator.validateCrust(pizza);
 	}
@@ -62,7 +62,7 @@ public class PizzaTest {
 		extraTopping.add("Pineapple");
 		OrderValidator.validateToppings(pizza);
 		pizza.setExtraTopping(extraTopping);
-		Crust crust= new Crust("Thin Crust",0);
+		Crust crust= new Crust("Thin Crust");
 		pizza.setCrust(crust);
 		OrderValidator.validateCrust(pizza);
 	}

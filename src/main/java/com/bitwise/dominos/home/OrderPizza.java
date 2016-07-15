@@ -3,6 +3,7 @@ package com.bitwise.dominos.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bitwise.dominos.dao.CrustDB;
 import com.bitwise.dominos.dao.PizzaDB;
 import com.bitwise.dominos.dao.ToppingDB;
 import com.bitwise.dominos.exception.InvalidCrustException;
@@ -53,6 +54,12 @@ public class OrderPizza {
 					}
 					
 				}
+				
+				if(pizza.getCrust() != null){
+					//System.out.println("pizza.getCrust().getCrustPrice()"+pizza.getCrust().getCrustPrice());
+					totalAmount=totalAmount+CrustDB.getPizzaCrustsMap().get(pizza.getCrust().getCrustType()).getCrustPrice();
+				}
+				
 			}
 		}
 		

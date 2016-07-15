@@ -9,6 +9,10 @@ public class Crust {
 	private String crustType;
 	private float crustPrice;
 	
+	public Crust(String crustType) {
+		this.crustType=crustType;
+	}
+	
 	public Crust(String crustType, int crustPrice) {
 		this.crustPrice=crustPrice;
 		this.crustType=crustType;
