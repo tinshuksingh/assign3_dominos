@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.bitwise.dominos.exception.InvalidCrustException;
 import com.bitwise.dominos.exception.InvalidOrderException;
 import com.bitwise.dominos.exception.InvalidToppingException;
-import com.bitwise.dominos.home.Order;
+import com.bitwise.dominos.home.OrderPizza;
 import com.bitwise.dominos.vo.Pizza;
 
 public class OrderTest {
@@ -24,7 +24,7 @@ public class OrderTest {
 		extraTopping.add("Chicken Sausage_1");
 		extraTopping.add("Chicken Salami_1");
 		pizza.setExtraTopping(extraTopping);
-		Order order= new Order();
+		OrderPizza order= new OrderPizza();
 		order.addPizza(pizza);
 	}
 	
@@ -32,7 +32,7 @@ public class OrderTest {
 	public void shouldBeAbleToReturnPizzaPrice() throws InvalidOrderException, InvalidCrustException, InvalidToppingException {
 		Pizza pizza = new Pizza();
 		pizza.setName("Margherita");
-		Order order= new Order();
+		OrderPizza order= new OrderPizza();
 		order.addPizza(pizza);
 		order.calculateTotalPrice();
 		assertEquals(187.5,order.getTotalAmount(),0);
@@ -47,7 +47,7 @@ public class OrderTest {
 		extraTopping.add("Chicken Salami");//95
 		extraTopping.add("Tomato");//10
 		pizza.setExtraTopping(extraTopping);
-		Order order= new Order();
+		OrderPizza order= new OrderPizza();
 		order.addPizza(pizza);
 		order.calculateTotalPrice();
 		assertEquals(643.75,order.getTotalAmount(),0);
@@ -55,7 +55,7 @@ public class OrderTest {
 	
 	@Test
 	public void shouldReturnMultiplePizzaPriceWithTax() throws InvalidOrderException, InvalidCrustException, InvalidToppingException {
-		Order order = new Order();
+		OrderPizza order = new OrderPizza();
 		//order.setVat(10);
 		//order.setServiceTax(15);
 		Pizza pizza = new Pizza();
