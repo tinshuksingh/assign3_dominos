@@ -2,7 +2,7 @@ package com.bitwise.dominos.dao;
 
 import java.util.HashMap;
 
-import com.bitwise.pizzaShop.pizza.Crust;
+import com.bitwise.dominos.vo.Crust;
 
 public class CrustDB {
 private static HashMap<String, Crust> pizzaCrustsMap;

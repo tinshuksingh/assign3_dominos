@@ -7,38 +7,55 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bitwise.dominos.exception.InvalidCrustException;
+import com.bitwise.dominos.exception.InvalidOrderException;
+import com.bitwise.dominos.exception.InvalidToppingException;
+import com.bitwise.dominos.home.Order;
+import com.bitwise.dominos.util.OrderValidator;
+import com.bitwise.dominos.vo.Crust;
+import com.bitwise.dominos.vo.Pizza;
+
 public class PizzaTest {
 
-	@Test
-	public void shouldBeAbleToReturnPizzaPrice() throws InvalidOrderException {
-		Pizza pizza = new Pizza("Chicken Maxicana","Cheese Burst");
-		int price=pizza.getPizzaPrice();
-		assertEquals(300,price);
-	}
-	
-	@Test
-	public void shouldBeAbleToCalculatePizzaPriceWithTopping() throws InvalidCrustException, InvalidOrderException {
-		Pizza pizza = new Pizza("Chicken Maxicana");
-	
-		List<String> extraTopping= new ArrayList<String>();
-		extraTopping.add("Chicken Sausage");
-		extraTopping.add("Chicken Salami");
-		extraTopping.add("Tomato");
-		
-		pizza.setExtraTopping(extraTopping);
-		
-		int totalPrice=pizza.getTotalPrice();
-		assertEquals(515,totalPrice);
-		
-	}
 	
 	@Test(expected = InvalidOrderException.class)
+	public void shouldReturnInvalidOrderException() throws InvalidOrderException{
+		Pizza pizza = new Pizza();
+		OrderValidator.validatePizza(pizza);
+		/*pizza.setName("MyPizza");
+		OrderValidator.validatePizza(pizza);*/
+	}
+	
+	@Test(expected = InvalidToppingException.class)
+	public void shouldReturnInvalidToppingException() throws InvalidToppingException{
+		Pizza pizza = new Pizza();
+		pizza.setName("Margherita");
+		List<String> extraTopping= new ArrayList<String>();
+		extraTopping.add("Pineapple1");
+		pizza.setExtraTopping(extraTopping);
+		OrderValidator.validateToppings(pizza);
+	}
+	
+	@Test(expected = InvalidCrustException.class)
+	public void shouldReturnInvalidCrustException() throws InvalidCrustException {
+		Pizza pizza = new Pizza();
+		pizza.setName("Margherita");
+		List<String> extraTopping= new ArrayList<String>();
+		extraTopping.add("Pineapple1");
+		pizza.setExtraTopping(extraTopping);
+		Crust crust= new Crust("Thin",0);
+		pizza.setCrust(crust);
+		OrderValidator.validateCrust(pizza);
+	}
+	
+	
+	/*@Test(expected = InvalidOrderException.class)
 	public void shouldNotAcceptSmallCheeseBurst() throws InvalidOrderException {
 		Pizza pizza = new Pizza("Chicken Maxicana","Cheese Burst","Small");
 	}
 	@Test(expected = InvalidOrderException.class)
 	public void shouldNotAcceptLargeCheeseBurst() throws InvalidOrderException {
 		Pizza pizza = new Pizza("Chicken Maxicana","Cheese Burst","Large");
-	}
+	}*/
 
 }

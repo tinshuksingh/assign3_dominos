@@ -6,23 +6,32 @@ import java.util.List;
 public class Pizza {
 
 	private String name;
-	private String price;
+	private float price;
 	private String size;
 	private List<String> toppingList;
-	private String crust = "Regular";
+	private Crust crust;
 	private List<String> extraTopping = new ArrayList<String>();
 	private List<String> removedDefaultTopping = new ArrayList<String>();
+	private ArrayList<Topping> defaultToppipng;
 	
+	public ArrayList<Topping> getDefaultToppipng() {
+		return defaultToppipng;
+	}
+	public void setDefaultToppipng(ArrayList<Topping> defaultToppipng) {
+		this.defaultToppipng = defaultToppipng;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
+
+	
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	public String getSize() {
@@ -37,10 +46,10 @@ public class Pizza {
 	public void setToppingList(List<String> toppingList) {
 		this.toppingList = toppingList;
 	}
-	public String getCrust() {
+	public Crust getCrust() {
 		return crust;
 	}
-	public void setCrust(String crust) {
+	public void setCrust(Crust crust) {
 		this.crust = crust;
 	}
 	public List<String> getExtraTopping() {

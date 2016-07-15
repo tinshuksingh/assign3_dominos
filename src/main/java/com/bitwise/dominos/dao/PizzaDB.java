@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.bitwise.pizzaShop.database.ToppingDB;
-import com.bitwise.pizzaShop.pizza.Crust;
-import com.bitwise.pizzaShop.pizza.Pizza;
-import com.bitwise.pizzaShop.pizza.Topping;
+import com.bitwise.dominos.vo.Crust;
+import com.bitwise.dominos.vo.Pizza;
+import com.bitwise.dominos.vo.Topping;
 
 public class PizzaDB {
 
@@ -20,7 +19,7 @@ public class PizzaDB {
 		ArrayList<Topping> defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Margherita");
 		pizza.setPrice(150);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Tomato"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Tomato"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Margherita", pizza);
@@ -30,9 +29,9 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Hawaiian Delight Non Veg");
 		pizza.setPrice(220);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Chicken Salami"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Jalapeno"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Pineapple"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Chicken Salami"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Jalapeno"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Pineapple"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Hawaiian Delight Non Veg", pizza);
@@ -42,9 +41,9 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Hawaiian Delight Veg");
 		pizza.setPrice(200);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Chicken Salami"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Pineapple"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Jalapeno"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Chicken Salami"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Pineapple"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Jalapeno"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Hawaiian Delight Veg", pizza);
@@ -54,10 +53,10 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Veggie Paradise");
 		pizza.setPrice(230);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Baby Corn"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Olives"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Capsicum"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Baby Corn"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Olives"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Capsicum"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Veggie Paradise", pizza);
@@ -67,9 +66,9 @@ public class PizzaDB {
 		pizza.setName("Peppy Paneer");
 		pizza.setPrice(230);
 		defaultTopping = new ArrayList<Topping>();
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Panner"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Capsicum"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Panner"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Capsicum"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Peppy Paneer", pizza);
@@ -83,10 +82,10 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Zesty Chicken");
 		pizza.setPrice(280);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Capsicum"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Chicken Sausage"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Barbeque Chicken"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Capsicum"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Chicken Sausage"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Barbeque Chicken"));
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Zesty Chicken", pizza);
@@ -101,10 +100,10 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Chicken Maxicana");
 		pizza.setPrice(300);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Onion"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Tomato"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Spicy Chicken"));		
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Onion"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Tomato"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Spicy Chicken"));		
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Chicken Maxicana", pizza);
@@ -119,10 +118,10 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Seventh Heaven");
 		pizza.setPrice(250);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Onion"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Tomato"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Spicy Chicken"));		
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Onion"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Tomato"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Spicy Chicken"));		
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Seventh Heaven", pizza);
@@ -136,10 +135,10 @@ public class PizzaDB {
 		defaultTopping = new ArrayList<Topping>();
 		pizza.setName("Cloud9");
 		pizza.setPrice(240);
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Paprika"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Onion"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Tomato"));
-		defaultTopping.add(ToppingDB.getPizzaToppings().get("Spicy Chicken"));		
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Paprika"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Onion"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Tomato"));
+		defaultTopping.add(ToppingDB.getPizzaToppingsMap().get("Spicy Chicken"));		
 		pizza.setDefaultToppipng(defaultTopping);
 		pizza.setCrust(new Crust("Regular", 0));
 		allPizzaMap.put("Cloud9", pizza);

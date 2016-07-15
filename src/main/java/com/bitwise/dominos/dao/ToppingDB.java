@@ -2,7 +2,7 @@ package com.bitwise.dominos.dao;
 
 import java.util.HashMap;
 
-import com.bitwise.pizzaShop.pizza.Topping;
+import com.bitwise.dominos.vo.Topping;
 
 public class ToppingDB {
 

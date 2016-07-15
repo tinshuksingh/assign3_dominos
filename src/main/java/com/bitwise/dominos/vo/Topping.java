@@ -5,9 +5,15 @@ import java.util.Map;
 
 public class Topping {
 	private String name;
-	private int totalPrice;
+	private float price;
+	private float totalPrice;
 	private static Map<String,Integer> toppingList= new HashMap<String, Integer>();
 	
+	public Topping(String name, float price) {
+		this.name=name;
+		this.price=price;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -16,8 +22,16 @@ public class Topping {
 		this.name = name;
 	}
 
-	public int getTotalPrice() {
-		return totalPrice;
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public void setTotalPrice(int totalPrice) {

@@ -2,11 +2,49 @@ package com.bitwise.dominos;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
+
+import com.bitwise.dominos.exception.InvalidCrustException;
+import com.bitwise.dominos.exception.InvalidOrderException;
+import com.bitwise.dominos.exception.InvalidToppingException;
+import com.bitwise.dominos.home.Order;
+import com.bitwise.dominos.vo.Pizza;
 
 public class OrderTest {
 
-	//order1
+	@Test
+	public void shouldBeAbleToReturnPizzaPrice() throws InvalidOrderException, InvalidCrustException, InvalidToppingException {
+		Pizza pizza = new Pizza();
+		pizza.setName("Margherita");
+		Order order= new Order();
+		order.addPizza(pizza);
+		order.calculateTotalPrice();
+		assertEquals(150,order.getTotalAmount(),0);
+	}
+	
+	@Test
+	public void shouldBeAbleToCalculatePizzaPriceWithTopping() throws InvalidCrustException, InvalidOrderException, InvalidToppingException {
+		Pizza pizza = new Pizza();
+		pizza.setName("Chicken Maxicana");
+		List<String> extraTopping= new ArrayList<String>();
+		extraTopping.add("Chicken Sausage");
+		extraTopping.add("Chicken Salami");
+		extraTopping.add("Tomato");
+		
+		pizza.setExtraTopping(extraTopping);
+		
+		Order order= new Order();
+		order.addPizza(pizza);
+		order.calculateTotalPrice();
+		
+		assertEquals(515,order.getTotalAmount(),0);
+		
+	}
+	
+	/*//order1
 	@Test
 	public void shouldReturnMultiplePizzaPriceWithTax() throws InvalidOrderException, InvalidCrustException {
 		Order order = new Order();
@@ -155,6 +193,6 @@ public class OrderTest {
 	{
 		Order order = new Order();
 		order.getTotalAmount();
-	}
+	}*/
 
 }

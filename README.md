@@ -1,1 +1,2 @@
-# assign3_dominos
+# assignment3
+Dominoz Pizza Assignment
