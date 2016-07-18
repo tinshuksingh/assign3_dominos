@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bitwise.dominos.dao.CrustDB;
+import com.bitwise.dominos.dao.PizzaDB;
 import com.bitwise.dominos.dao.PizzaPriceDB;
 import com.bitwise.dominos.dao.ToppingDB;
 import com.bitwise.dominos.exception.InvalidCrustException;
@@ -13,10 +14,15 @@ import com.bitwise.dominos.util.OrderValidator;
 import com.bitwise.dominos.vo.Pizza;
 import com.bitwise.dominos.vo.Topping;
 
+/**
+ * @author tinshuk
+ *
+ */
 public class OrderPizza {
 
-	private final double vat=0.1;
-	private final double serviceTax=0.15;
+	static final double vat=0.1;
+	static final double serviceTax=0.15;
+	
 	private List<Pizza> pizzaList;
 	private double totalAmount;
 	
@@ -25,9 +31,6 @@ public class OrderPizza {
 			pizzaList =  new ArrayList<Pizza>();
 		}
 		return pizzaList;
-	}
-	public void setPizzaList(List<Pizza> pizzaList) {
-		this.pizzaList = pizzaList;
 	}
 	
 	public double getTotalAmount() {
@@ -46,25 +49,53 @@ public class OrderPizza {
 		List<Pizza> pizzas=getPizzaList();
 		if(pizzas != null && pizzas.size()>0){
 			for(Pizza pizza: pizzas){
+				
+				//remove default topping from pizza if selected
+				removeDefaultTopping(pizza);
+				
+				//Get price of pizza from DB		
 				totalAmount=totalAmount+PizzaPriceDB.getPizzaPrice(pizza.getName()).get(pizza.getSize());
 				
-				if(pizza.getExtraTopping() != null && pizza.getExtraTopping().size()>0){
-					for(String topping:pizza.getExtraTopping()){
-						Topping top= ToppingDB.getPizzaToppingsMap().get(topping);
-						totalAmount=totalAmount+top.getPrice();
-					}
-				}
+				//Include price of topping if any added
+				getExtraToppingPrice(pizza);
 				
+				//Add Crust price if any
 				if(pizza.getCrust() != null){
 					totalAmount=totalAmount+CrustDB.getPizzaCrustsMap().get(pizza.getCrust().getCrustType()).getCrustPrice();
 				}
+				
 			}
 		}
-		
-		System.out.println("totalAmmount :"+totalAmount);
-		System.out.println("Vat"+(totalAmount*vat));
-		System.out.println("serviceTax"+(totalAmount*serviceTax));
 		totalAmount=totalAmount+(totalAmount*vat)+(totalAmount*serviceTax);
+	}
+	/**
+	 * @param pizza
+	 */
+	private void getExtraToppingPrice(Pizza pizza) {
+		if(pizza.getExtraTopping() != null && pizza.getExtraTopping().size()>0){
+			for(String topping:pizza.getExtraTopping()){
+				Topping top= ToppingDB.getPizzaToppingsMap().get(topping);
+				totalAmount=totalAmount+top.getPrice();
+			}
+		}
+	}
+	
+	/**
+	 * @param pizza
+	 */
+	private void removeDefaultTopping(Pizza pizza) {
+		if(pizza.getRemoveDefaultTopping()!= null && pizza.getRemoveDefaultTopping().size()>0){
+			for(String removeTopping:pizza.getRemoveDefaultTopping()){
+				ArrayList<Topping> existingTopping=PizzaDB.getAllPizzaMap().get(pizza.getName()).getDefaultToppipng();
+				if(existingTopping != null && existingTopping.size()>0){
+					for(int i=0;i<existingTopping.size();i++){
+						if(existingTopping.get(i).getName().equals(removeTopping)){
+							existingTopping.remove(i);
+						}
+					}
+				}
+			}
+		}
 	}
 	
 

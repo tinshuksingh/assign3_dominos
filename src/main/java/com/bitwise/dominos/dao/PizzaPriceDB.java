@@ -3,6 +3,11 @@ package com.bitwise.dominos.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author tinshuk
+ *
+ */
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class PizzaPriceDB {
 
 	
@@ -65,14 +70,6 @@ public class PizzaPriceDB {
 		allPizzaPrice.put("Cloud9", newMap);
 		
 	}
-	
-	/*public static Map<String, Map<String, Integer>> getAllPizzaPrice() {
-		return allPizzaPrice;
-	}
-	public static void setAllPizzaPrice(
-			Map<String, Map<String, Integer>> allPizzaPrice) {
-		PizzaPrice.allPizzaPrice = allPizzaPrice;
-	}*/
 	
 	public static Map<String, Integer> getPizzaPrice(String name) {
 		return allPizzaPrice.get(name);

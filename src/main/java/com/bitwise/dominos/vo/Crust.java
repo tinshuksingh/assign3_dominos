@@ -1,5 +1,9 @@
 package com.bitwise.dominos.vo;
 
+/**
+ * @author tinshuk
+ *
+ */
 public class Crust {
 	@Override
 	public String toString() {
@@ -7,7 +11,7 @@ public class Crust {
 				+ "]";
 	}
 	private String crustType;
-	private float crustPrice;
+	private double crustPrice;
 	
 	public Crust(String crustType) {
 		this.crustType=crustType;
@@ -23,10 +27,10 @@ public class Crust {
 	public void setCrustType(String crustType) {
 		this.crustType = crustType;
 	}
-	public float getCrustPrice() {
+	public double getCrustPrice() {
 		return crustPrice;
 	}
-	public void setCrustPrice(float crustPrice) {
+	public void setCrustPrice(double crustPrice) {
 		this.crustPrice = crustPrice;
 	}
 	

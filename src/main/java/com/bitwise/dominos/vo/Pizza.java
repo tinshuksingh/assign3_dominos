@@ -3,15 +3,18 @@ package com.bitwise.dominos.vo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author tinshuk
+ *
+ */
 public class Pizza {
 
 	private String name;
-	private float price;
 	private String size;
-	private List<String> toppingList;
 	private Crust crust;
+	private double price;
 	private List<String> extraTopping = new ArrayList<String>();
-	private List<String> removedDefaultTopping = new ArrayList<String>();
+	private List<String> removeDefaultTopping = new ArrayList<String>();
 	private ArrayList<Topping> defaultToppipng;
 	
 	
@@ -20,15 +23,14 @@ public class Pizza {
 		this.size=size;
 	}
 	
-	@Override
-	public String toString() {
-		return "Pizza [name=" + name + ", price=" + price + ", size=" + size
-				+ ", toppingList=" + toppingList + ", crust=" + crust
-				+ ", extraTopping=" + extraTopping + ", removedDefaultTopping="
-				+ removedDefaultTopping + ", defaultToppipng="
-				+ defaultToppipng + "]";
+	public double getPrice() {
+		return price;
 	}
 
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 	public ArrayList<Topping> getDefaultToppipng() {
 		return defaultToppipng;
 	}
@@ -41,23 +43,12 @@ public class Pizza {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public float getPrice() {
-		return price;
-	}
-	public void setPrice(float price) {
-		this.price = price;
-	}
+
 	public String getSize() {
 		return size;
 	}
 	public void setSize(String size) {
 		this.size = size;
-	}
-	public List<String> getToppingList() {
-		return toppingList;
-	}
-	public void setToppingList(List<String> toppingList) {
-		this.toppingList = toppingList;
 	}
 	public Crust getCrust() {
 		return crust;
@@ -71,11 +62,19 @@ public class Pizza {
 	public void setExtraTopping(List<String> extraTopping) {
 		this.extraTopping = extraTopping;
 	}
-	public List<String> getRemovedDefaultTopping() {
-		return removedDefaultTopping;
+	public List<String> getRemoveDefaultTopping() {
+		return removeDefaultTopping;
 	}
-	public void setRemovedDefaultTopping(List<String> removedDefaultTopping) {
-		this.removedDefaultTopping = removedDefaultTopping;
+	public void setRemoveDefaultTopping(List<String> removedDefaultTopping) {
+		this.removeDefaultTopping = removedDefaultTopping;
+	}
+	
+	@Override
+	public String toString() {
+		return "Pizza Details [name=" + name + ", size=" + size + ", crust=" + crust
+				+ ", price=" + price + ", extraTopping=" + extraTopping
+				+ ", removeDefaultTopping=" + removeDefaultTopping
+				+ ", defaultToppipng=" + defaultToppipng + "]";
 	}
 	
 }

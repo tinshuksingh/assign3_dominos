@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 import com.bitwise.dominos.vo.Topping;
 
+/**
+ * @author tinshuk
+ *
+ */
 public class ToppingDB {
 
 	private static HashMap<String, Topping> pizzaToppingsMap;
