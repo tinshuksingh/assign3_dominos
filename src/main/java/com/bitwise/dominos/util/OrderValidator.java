@@ -53,6 +53,11 @@ public class OrderValidator {
 	 * @throws InvalidOrderException
 	 */
 	public static void validatePizza(Pizza pizza) throws InvalidOrderException {
+		
+		if(pizza == null){
+			throw new InvalidOrderException();
+		}
+		
 		if (pizza.getName() == null || pizza.getName().trim().length() == 0){
 			System.out.println("Provide correct pizza name.");
 			throw new InvalidOrderException();

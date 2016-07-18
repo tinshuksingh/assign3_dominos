@@ -14,6 +14,21 @@ public class Pizza {
 	private List<String> removedDefaultTopping = new ArrayList<String>();
 	private ArrayList<Topping> defaultToppipng;
 	
+	
+	public Pizza(String name,String size){
+		this.name=name;
+		this.size=size;
+	}
+	
+	@Override
+	public String toString() {
+		return "Pizza [name=" + name + ", price=" + price + ", size=" + size
+				+ ", toppingList=" + toppingList + ", crust=" + crust
+				+ ", extraTopping=" + extraTopping + ", removedDefaultTopping="
+				+ removedDefaultTopping + ", defaultToppipng="
+				+ defaultToppipng + "]";
+	}
+
 	public ArrayList<Topping> getDefaultToppipng() {
 		return defaultToppipng;
 	}
@@ -26,8 +41,6 @@ public class Pizza {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 	public float getPrice() {
 		return price;
 	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bitwise.dominos.dao.CrustDB;
-import com.bitwise.dominos.dao.PizzaDB;
+import com.bitwise.dominos.dao.PizzaPriceDB;
 import com.bitwise.dominos.dao.ToppingDB;
 import com.bitwise.dominos.exception.InvalidCrustException;
 import com.bitwise.dominos.exception.InvalidOrderException;
@@ -46,20 +46,18 @@ public class OrderPizza {
 		List<Pizza> pizzas=getPizzaList();
 		if(pizzas != null && pizzas.size()>0){
 			for(Pizza pizza: pizzas){
-				totalAmount=totalAmount+PizzaDB.getAllPizzaMap().get(pizza.getName()).getPrice();
+				totalAmount=totalAmount+PizzaPriceDB.getPizzaPrice(pizza.getName()).get(pizza.getSize());
+				
 				if(pizza.getExtraTopping() != null && pizza.getExtraTopping().size()>0){
 					for(String topping:pizza.getExtraTopping()){
 						Topping top= ToppingDB.getPizzaToppingsMap().get(topping);
 						totalAmount=totalAmount+top.getPrice();
 					}
-					
 				}
 				
 				if(pizza.getCrust() != null){
-					//System.out.println("pizza.getCrust().getCrustPrice()"+pizza.getCrust().getCrustPrice());
 					totalAmount=totalAmount+CrustDB.getPizzaCrustsMap().get(pizza.getCrust().getCrustType()).getCrustPrice();
 				}
-				
 			}
 		}
 		
@@ -67,8 +65,6 @@ public class OrderPizza {
 		System.out.println("Vat"+(totalAmount*vat));
 		System.out.println("serviceTax"+(totalAmount*serviceTax));
 		totalAmount=totalAmount+(totalAmount*vat)+(totalAmount*serviceTax);
-		
-		
 	}
 	
 
